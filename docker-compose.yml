@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - '8080:8080'
+    restart: unless-stopped
+    networks:
+      - default
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: athenas
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 12345678
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  web:
+    build: ./app
+    command: gunicorn --bind 0.0.0.0:8000 athenas.wsgi:application
+    volumes:
+      - ./app:/app
+    ports:
+      - '8000:8000'
+    env_file:
+      - ./.env
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - /path/to/static:/static
+      - /path/to/media:/media
+    depends_on:
+      - web
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  postgres_data:

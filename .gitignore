@@ -1,0 +1,72 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribuições
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+bin/
+var/
+sdist/
+*.egg-info/
+.installed.cfg
+*.egg
+lib/
+lib64/
+__pycache__/
+
+# Diretorios criados por editores de texto e IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de log e bancos de dados
+*.log
+*.sqlite3
+
+# Ambientes Virtuais e dependências instaladas
+venv/
+ENV/
+env/
+.venv/
+env.bak/
+.env.bak/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Arquivos de configuração sensíveis
+.env
+*.local
+
+# Arquivos do sistema do Docker
+*.pid
+*.seed
+docker-compose.override.yml
+
+# Arquivos de configuração de banco de dados e senhas
+*.db
+*.bak
+
+# Django stuff:
+*.mo
+*.pot
+db.sqlite3
+/media
+/static
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
